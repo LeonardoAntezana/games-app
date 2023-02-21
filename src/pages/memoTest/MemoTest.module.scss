@@ -1,0 +1,21 @@
+.memoTest{
+    max-width: 800px;
+    margin: auto;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    .conteiner__image{
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px solid #b5adc3;
+        .img__front{
+            width: 100%;
+            height: auto;
+        }
+        .img__back{
+            @extend .img__front;
+            filter: invert(0.4) sepia(1) hue-rotate(205deg) saturate(1000%);
+        }
+    
+    }
+}

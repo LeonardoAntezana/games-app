@@ -1,0 +1,40 @@
+.container__modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(122, 101, 101, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal{
+        width: 40%;
+        min-width: 300px;
+        background-color: white;
+        padding: 3rem 0;
+        border-radius: 0.5em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5rem;
+        .modal__title{
+            text-align: center;
+        }
+        .buttons__modal{
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            button{
+                color: #fff;
+                padding: 1rem 2rem;
+                font-weight: bold;
+                border: none;
+            }
+            .btn__modal{
+                background-color:  rgb(61, 27, 61);
+                border-radius: 1rem;
+            }    
+        }
+    }
+}
