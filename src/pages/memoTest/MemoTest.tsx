@@ -38,6 +38,10 @@ const MemoTest = () => {
     }
   }, [cardsSelected])
 
+  const inList = (image: ImageCard) => couples.includes(image) || cardsSelected.includes(image)
+
+  const cardSelected = (image: ImageCard) => setCardsSelected(cards => ([...cards, image]))
+
   useEffect(() => {
     if(couples.length === IMAGES.length){
       setModalVisible(true)
@@ -45,12 +49,11 @@ const MemoTest = () => {
   }, [couples])
       return(
         <div className={styles.memoTest}>
-          {IMAGES.map(image => couples.includes(image) || cardsSelected.includes(image)
-          ? <div className={styles.conteiner__image} key={image.id}><img className={styles.img__front} src={image.url}/></div>
-          : <div onClick={() => setCardsSelected([...cardsSelected, image])} className={styles.conteiner__image} key={image.id}>
-          <img className={styles.img__back} src={'https://cdn-icons-png.flaticon.com/512/9621/9621857.png'}/>
-        </div>)}
-        {modalVisible && <Modal title='Ganaste!' setModal={handleClick}/>}
+          {IMAGES.map(image =>
+            <div onClick={() => cardSelected(image)} className={inList(image) ? styles.conteiner__image : styles.conteiner__image__back} key={image.id}>
+              <img className={styles.img__front} src={image.url}/>
+            </div>)}
+          {modalVisible && <Modal title='Ganaste!' setModal={handleClick}/>}
         </div>
       )
     }
