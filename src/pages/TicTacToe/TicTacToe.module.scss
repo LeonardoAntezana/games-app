@@ -1,26 +1,43 @@
-.tablero{
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+
+.container{
     display: flex;
-    justify-content: space-around;
-    .scorePlayer{
-        height: 370px;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 2rem;
+    .title{
+        color: rgb(209, 180, 180);
+    }
+    .score{
         display: flex;
-        gap: 40px;
-        padding: 25px;
-        border-radius: 10px;
-        background-color: antiquewhite;
-        .container__options{
-            display: grid;
-            grid-template-columns: 100px;
-            grid-auto-rows: 100px;
-            align-content: space-between;
-            .option{
-                border: 2px solid rgb(209, 180, 180);
+        align-items: center;
+        padding: 10px 25px;
+        background-color: rgb(214, 100, 214);
+        .scoreText{
+            font-size: 2rem;
+        }
+    }
+    .tablero{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        .playerScore{
+            height: 370px;
+            display: flex;
+            gap: 40px;
+            padding: 25px;
+            background-color: aliceblue;
+            .container__options{
+                display: grid;
+                grid-template-columns: 100px;
+                grid-auto-rows: 100px;
+                align-content: space-between;
+                .option{
+                    border: 2px solid rgb(209, 180, 180);
+                }
             }
         }
     }
-}
-
-.container__buttonStart{
-    display: flex;
-    justify-content: center;
 }

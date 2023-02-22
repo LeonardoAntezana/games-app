@@ -1,10 +1,11 @@
 import GameCard from "../../components/GameCard/GameCard";
 import imageMemo from '../../assets/memotest.png'
+import imageTic from '../../assets/ticTacToe.png'
 import styles from './Home.module.scss'
 
 const GAMES = [
     {title: 'memotest', url: imageMemo},
-    {title: 'tic-Tac-Toe', url: imageMemo},
+    {title: 'tic-Tac-Toe', url: imageTic},
 ]
 
 const Home = () => {

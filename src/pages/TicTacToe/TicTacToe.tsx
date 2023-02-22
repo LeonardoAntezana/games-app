@@ -4,6 +4,7 @@ import piedraImg from '../../assets/piedra.png'
 import tijeraImg from '../../assets/tijeras.png'
 import questionImg from '../../assets/informacion.png'
 import { ImageResponsive } from '../../components'
+import ScorePlayer from '../../components/ScorePlayer/Scoreplayer'
 import styles from './TicTacToe.module.scss'
 
 const IMAGES  = [
@@ -39,11 +40,13 @@ const TicTacToe = () => {
         : setScore(score => ({...score, cpu: score.cpu + 1}))
   }
   return (
-    <div>
-      <h1>TIC TAC TOE</h1>
-      <p>{score.playerOne}||||||||||||||{score.cpu}</p>
+    <div className={styles.container}>
+      <h1 className={styles.title}>TIC TAC TOE</h1>
+      <ScorePlayer className={styles.score}>
+        <span className={styles.scoreText}>{score.playerOne} ||| {score.cpu}</span>
+      </ScorePlayer>
       <div className={styles.tablero}>
-        <div className={styles.scorePlayer}>
+        <ScorePlayer className={styles.playerScore}>
           <div className={styles.container__options}>
           {IMAGES.map((image, index) => 
           <ImageResponsive 
@@ -54,8 +57,8 @@ const TicTacToe = () => {
           />)}
           </div>
           <ImageResponsive image={optionSelected}/>
-        </div>
-        <div className={styles.scorePlayer}>
+        </ScorePlayer>
+        <ScorePlayer className={styles.playerScore}>
           <ImageResponsive image={optionCpu}/>
           <div className={styles.container__options}>
           {IMAGES.map((image, index) => 
@@ -65,9 +68,8 @@ const TicTacToe = () => {
           image={imageQuestion} 
           />)}
           </div>
-        </div>
+        </ScorePlayer>
       </div>
-      <div className={styles.container__buttonStart}><button>START GAME</button></div>
     </div>
   )
 }

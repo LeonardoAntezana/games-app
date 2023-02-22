@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(48, 46, 46);
+    background-color: rgb(255, 255, 255);
 }
 
 .gameCard{
@@ -13,12 +13,11 @@ body{
         text-transform: uppercase;
     }
     .container__image{
-        img{
-            width: 100%;
-            height: auto;
-            display: block;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-        }
+        height: 250px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
     }
 }

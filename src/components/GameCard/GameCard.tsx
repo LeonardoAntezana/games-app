@@ -10,9 +10,7 @@ const GameCard : React.FC<Props> = ({title, url}) => {
     return (
       <Link to={`/${title.toLowerCase().replaceAll('-', '')}`} className={styles.gameCard}>
         <h2 className={styles.gameCard__title}>{title}</h2>
-        <div className={styles.container__image}>
-          <img src={url} alt={`logo-${title}`} />
-        </div>
+        <div className={styles.container__image} style={{backgroundImage: `url(${url})`}}></div>
       </Link>
     )
 }
