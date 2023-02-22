@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Josefin+Sans&display=swap');
+
 
 .container{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 60px;
     font-family: 'Fira Sans', sans-serif;
-    font-size: 2rem;
     .title{
         color: rgb(209, 180, 180);
     }
@@ -41,3 +42,4 @@
         }
     }
 }
+

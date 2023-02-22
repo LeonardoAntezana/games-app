@@ -1,23 +1,27 @@
-body{
-    background-color: rgb(255, 255, 255);
-}
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 .gameCard{
-    background-color: bisque;
+    background-color: aqua;
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
     &__title{
+        font-family: 'Josefin Sans', sans-serif;
+        color: black;
         padding: 20px 0;
         text-align: center;
-        text-transform: uppercase;
+        text-transform: capitalize;
     }
     .container__image{
         height: 250px;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    &:hover{
+        transform: scale(1.02);
     }
 }

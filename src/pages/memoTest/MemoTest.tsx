@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ImageCard } from "../../models/image.type";
 import Modal from '../../components/Modal/Modal';
 import styles from './MemoTest.module.scss'
+import View from '../../components/View/View';
 
 const IMAGES : ImageCard[] = [
     {id: 1, url: 'https://cdn-icons-png.flaticon.com/512/3069/3069172.png'},
@@ -48,13 +49,15 @@ const MemoTest = () => {
     }
   }, [couples])
       return(
-        <div className={styles.memoTest}>
+       <View bgColor='rgb(44 119 116)'>
+         <div className={styles.memoTest}>
           {IMAGES.map(image =>
             <div onClick={() => cardSelected(image)} className={inList(image) ? styles.conteiner__image : styles.conteiner__image__back} key={image.id}>
               <img className={styles.img__front} src={image.url}/>
             </div>)}
           {modalVisible && <Modal title='Ganaste!' setModal={handleClick}/>}
         </div>
+       </View>
       )
     }
 

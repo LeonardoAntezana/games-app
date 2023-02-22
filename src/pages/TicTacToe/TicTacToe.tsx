@@ -5,6 +5,7 @@ import tijeraImg from '../../assets/tijeras.png'
 import questionImg from '../../assets/informacion.png'
 import { ImageResponsive } from '../../components'
 import ScorePlayer from '../../components/ScorePlayer/Scoreplayer'
+import View from '../../components/View/View'
 import styles from './TicTacToe.module.scss'
 
 const IMAGES  = [
@@ -40,7 +41,7 @@ const TicTacToe = () => {
         : setScore(score => ({...score, cpu: score.cpu + 1}))
   }
   return (
-    <div className={styles.container}>
+    <View bgColor='#252525' className={styles.container}>
       <h1 className={styles.title}>TIC TAC TOE</h1>
       <ScorePlayer className={styles.score}>
         <span className={styles.scoreText}>{score.playerOne} ||| {score.cpu}</span>
@@ -70,7 +71,7 @@ const TicTacToe = () => {
           </div>
         </ScorePlayer>
       </div>
-    </div>
+    </View>
   )
 }
 
