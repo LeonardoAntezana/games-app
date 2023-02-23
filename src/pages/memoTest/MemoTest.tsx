@@ -49,8 +49,9 @@ const MemoTest = () => {
     }
   }, [couples])
       return(
-       <View bgColor='rgb(44 119 116)'>
-         <div className={styles.memoTest}>
+       <View className={styles.container} bgColor='rgb(44 119 116)'>
+        <h1 className={styles.title}>MEMOTEST</h1>
+        <div className={styles.memoTest}>
           {IMAGES.map(image =>
             <div onClick={() => cardSelected(image)} className={inList(image) ? styles.conteiner__image : styles.conteiner__image__back} key={image.id}>
               <img className={styles.img__front} src={image.url}/>
