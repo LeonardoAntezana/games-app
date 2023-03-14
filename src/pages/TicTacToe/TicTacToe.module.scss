@@ -8,18 +8,41 @@
     .title{
         color: rgb(209, 180, 180);
     }
+    .messageScore__hidden{
+        color: #fff;
+        transition: all 1s ease-in-out;
+        height: 0px;
+        opacity: 0;
+    }
+    .messageScore{
+        @extend .messageScore__hidden;
+        opacity: 1;
+    }
     .score{
         display: flex;
         align-items: center;
         padding: 10px 25px;
         background-color: rgb(214, 100, 214);
+        transition: background-color 0.5s ;
         .scoreText{
             font-size: 2rem;
         }
-    }      
+    }
+    .scoreWin{
+      @extend .score;
+      background-color: green;
+      animation-name: scoreAnimation;
+      animation-duration: 0.7s;  
+    }
+    .scoreLoss{
+        @extend .scoreWin;
+        background-color: red;  
+      }      
     .tablero{
         width: 100%;
         display: flex;
+        flex-wrap: wrap;
+        row-gap: 2rem;
         justify-content: space-around;
         .playerScore{
             height: 370px;
@@ -40,3 +63,17 @@
     }
 }
 
+@keyframes scoreAnimation{
+    0%{
+        transform: translateX(2px);
+    }
+    50%{
+        transform: translateX(-4px);
+    }
+    75%{
+        transform: translateX(4px);
+    }
+    100%{
+        transform: translateX(-2px);
+    }
+}

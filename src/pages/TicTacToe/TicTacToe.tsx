@@ -1,10 +1,9 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useMemo } from 'react'
 import papelImg from '../../assets/bolsa-de-papel.png'
 import piedraImg from '../../assets/piedra.png'
 import tijeraImg from '../../assets/tijeras.png'
 import questionImg from '../../assets/informacion.png'
-import { ImageResponsive } from '../../components'
-import ScorePlayer from '../../components/ScorePlayer/Scoreplayer'
+import { ImageResponsive, Scoreplayer } from '../../components'
 import View from '../../components/View/View'
 import styles from './TicTacToe.module.scss'
 
@@ -20,6 +19,19 @@ const TicTacToe = () => {
   const [optionSelected, setOptionSelected] = useState(imageQuestion)
   const optionCpu = useRef(imageQuestion)
   const score = useRef({playerOne: 0, cpu: 0})
+  const messaje = useRef<any>(null)
+
+  const winCpu = useMemo(() => {
+    if(score.current.cpu === score.current.playerOne){
+      return styles.score
+    }
+    if(score.current.cpu > score.current.playerOne){
+      return styles.scoreLoss
+    }
+    else{
+      return styles.scoreWin
+    }
+  } , [score.current.cpu, score.current.playerOne])
 
   const randomChoiceCpu = () => IMAGES[Math.floor(Math.random() * IMAGES.length)]
 
@@ -29,25 +41,35 @@ const TicTacToe = () => {
     setTimeout(()=> {
       setOptionSelected(imageQuestion)
       optionCpu.current = imageQuestion
-    }, 1000)
+    }, 2000)
   }
 
   const calculateWinner = (image : any) => {
       const imageRandom = randomChoiceCpu()
       optionCpu.current = imageRandom
-      image.name === imageRandom.loserWith 
-        ? score.current.playerOne = score.current.playerOne + 1  
-        : image.name === imageRandom.name ? console.log('empate') 
-        : score.current.cpu = score.current.cpu + 1
+      if(image === imageRandom){
+        messaje.current = 'Empate!'
+      }
+      if(image.name === imageRandom.loserWith){
+        messaje.current = 'Sigue asi!'
+        score.current.playerOne = score.current.playerOne + 1
+      }
+      else{
+        messaje.current = 'ohoh...'
+        score.current.cpu = score.current.cpu + 1
+      }
+      setTimeout(() => messaje.current = '', 1000)
   }
+
   return (
     <View bgColor='#252525' className={styles.container}>
       <h1 className={styles.title}>TIC TAC TOE</h1>
-      <ScorePlayer className={styles.score}>
+      <Scoreplayer className={winCpu}>
         <span className={styles.scoreText}>{score.current.playerOne} ||| {score.current.cpu}</span>
-      </ScorePlayer>
+      </Scoreplayer>
+      <p className={messaje.current ? styles.messageScore : styles.messageScore__hidden}>{messaje.current}</p>
       <div className={styles.tablero}>
-        <ScorePlayer className={styles.playerScore}>
+        <Scoreplayer className={styles.playerScore}>
           <div className={styles.container__options}>
           {IMAGES.map((image, index) => 
           <ImageResponsive 
@@ -58,8 +80,8 @@ const TicTacToe = () => {
           />)}
           </div>
           <ImageResponsive image={optionSelected}/>
-        </ScorePlayer>
-        <ScorePlayer className={styles.playerScore}>
+        </Scoreplayer>
+        <Scoreplayer className={styles.playerScore}>
           <ImageResponsive image={optionCpu.current}/>
           <div className={styles.container__options}>
           {IMAGES.map((image, index) => 
@@ -69,7 +91,7 @@ const TicTacToe = () => {
           image={imageQuestion} 
           />)}
           </div>
-        </ScorePlayer>
+        </Scoreplayer>
       </div>
     </View>
   )
